@@ -1,0 +1,40 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="connections.css">
+        <script type="text/javascript" src="objects/board.js"></script>
+        <script type="text/javascript" src="repositories/board-repository.js"></script>
+        <script type="text/javascript" src="repositories/session-repository.js"></script>
+        <script type="text/javascript" src="services/board-service.js"></script>
+        <script type="text/javascript" src="services/session-service.js"></script>
+        <script type="text/javascript" src="connections.js"></script>
+    </head> 
+    <body>
+        <div id="snackbar"></div>
+        <form class="board">
+            <h3>Create four groups of four!</h3>
+            <fieldset class="board-container">
+                <div id="answers-container" class="answers-container"></div>
+                <div id="cards-container" class="cards-container"></div>
+            </fieldset>
+        </form>
+        <span id="mistakes-container" class="mistakes-container">
+            <p class="mistakes-count-container">
+                Mistakes Remaining:
+                <span id="mistakes-bubbles" class="mistakes-bubbles"></span>
+            </p>
+        </span>
+        <div class="buttons-container">
+            <button id="shuffle-button" class="button" data-is-disabled="false" onclick="shuffle()">Shuffle</button>
+            <button id="deselect-all-button" class="button" data-is-disabled="true" onclick="deselectAll()">Deselect All</button>
+            <button id="submit-button" class="button" data-is-disabled="true" onclick="submit()">Submit</button>
+        </div>
+
+        <div id="end-modal" class="end-modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal()">&times;</span>
+                <span id="modal-text"></span>
+                <div id="blocks-container" class="blocks-container"></div>
+            </div>
+        </div>
+    </body>
+</html>
