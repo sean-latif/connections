@@ -1,0 +1,58 @@
+.board {
+    font-size: 18px;
+}
+
+.board-container {
+    position: relative;
+    margin: 24px auto;
+    width: calc(3* 8px + 4* 150px);
+    height: calc(3* 8px + 4* 80px);
+    padding: 0;
+    border: 0;
+}
+
+.answers-container {
+    width: calc(3* 8px + 4* 150px);
+    height: 0px;
+    display: grid;
+    min-width: 0;
+    min-height: 0;
+    gap: 8px;
+    grid-template-rows: repeat(4, 1fr);
+    grid-template-columns: 1fr;
+    top: 0;
+    padding-bottom: 8px;
+}
+
+.answers-container-category {
+    text-transform: uppercase;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 6px;
+    font-family: Arial;
+    line-height: 25px;
+    z-index: 1;
+    animation-fill-mode: forwards;
+    overflow: hidden;
+    min-width: 0;
+    color: black;
+}
+
+.answers-container h3 {
+    font-weight: 700;
+    margin: 0px;
+}
+
+.cards-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    height: calc(3* 8px + 4* 80px);
+    width: calc(3* 8px + 4* 150px);
+    gap: 8px;
+    bottom: 0;
+    min-height: 0;
+    min-width: 0;
+}
