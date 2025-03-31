@@ -18,9 +18,9 @@ class GameElement extends HTMLElement {
             </p>
         </span>
         <div class="buttons-container">
-            <button id="shuffle-button" class="button" data-is-disabled="false" onclick="shuffle()">Shuffle</button>
-            <button id="deselect-all-button" class="button" data-is-disabled="true" onclick="deselectAll()">Deselect All</button>
-            <button id="submit-button" class="button" data-is-disabled="true" onclick="submit()">Submit</button>
+            <button id="shuffle-button" class="button" data-is-disabled="false">Shuffle</button>
+            <button id="deselect-all-button" class="button" data-is-disabled="true">Deselect All</button>
+            <button id="submit-button" class="button" data-is-disabled="true">Submit</button>
         </div>`;
 
         this.shadowRoot.getElementById('shuffle-button').onclick = () => this.shuffle();

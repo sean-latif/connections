@@ -1,4 +1,8 @@
 class BoardService {    
+    static createBoard(board) {
+        return BoardRepository.createBoard(board);
+    }
+    
     static getBoardItems(boardId) {
         const items = [];
         const board = BoardRepository.getConnectionsBoard(boardId);

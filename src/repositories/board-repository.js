@@ -3,6 +3,12 @@ class BoardRepository {
         return this.boards[boardId];
     }
 
+    static createBoard(board) {
+        const boardId = Math.floor(Math.random() * 100) + 100;
+        this.boards[boardId] = board;
+        return boardId;
+    }
+
     static boards = {
         '0': {
             Categories: [

@@ -1,6 +1,7 @@
 class BoardElement extends HTMLElement {    
     static observedAttributes = ['board-id'];
 
+    _boardId;
     CATEGORY_COUNT = 4;
     CATEGORY_ITEM_COUNT = 4;
 
@@ -30,6 +31,7 @@ class BoardElement extends HTMLElement {
 
     attributeChangedCallback(name, oldValue, newValue) {
         if (name === 'board-id') {
+            this._boardId = newValue;
             const items = BoardService.getBoardItems(newValue);
             const cardsContainer = this.shadowRoot.getElementById('cards-container');
             this.shuffleItems(items.map(item => item.Label)).forEach(item => {
@@ -67,7 +69,7 @@ class BoardElement extends HTMLElement {
     submit() {
         const selectedCards = this.getCards().filter(this.isCardSelected);
         const submission = selectedCards.map($card => $card.getAttribute('text'));
-        const result = BoardService.evaluateGuess(_boardId, submission);
+        const result = BoardService.evaluateGuess(this._boardId, submission);
         let isBoardComplete = false;
 
         if (result.isSuccess) {

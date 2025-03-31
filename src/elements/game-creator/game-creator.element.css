@@ -1,0 +1,36 @@
+.buttons-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.button {
+    font-size: 16px;
+    font-weight: 600;
+    display: flex;
+    width: fit-content;
+    min-width: 5.5em;
+    height: 3em;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    max-width: 80vw;
+    border-radius: 32px;
+    line-height: 1.5em;
+    cursor: pointer;
+    border: 1px solid;
+    background-color: #fff;
+    color: #121212;
+    border-color: #121212;
+}
+
+.button[data-is-disabled="true"] {
+    pointer-events: none;
+    background-color: #fff;
+    color: #8b8b8b;
+    border-color: #979797;
+}
+
+.button[data-is-disabled="false"] {
+    pointer-events: auto;
+}

@@ -1,0 +1,24 @@
+.board {
+    font-size: 18px;
+}
+
+.board-container {
+    position: relative;
+    margin: 24px auto;
+    width: calc(3* 8px + 4* 150px);
+    height: calc(3* 8px + 4* 80px);
+    padding: 0;
+    border: 0;
+}
+
+.cards-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    height: calc(3* 8px + 4* 80px);
+    width: calc(3* 8px + 4* 150px);
+    gap: 8px;
+    bottom: 0;
+    min-height: 0;
+    min-width: 0;
+}
