@@ -1,5 +1,5 @@
 class GameCreatorCardElement extends HTMLElement {        
-    static observedAttributes = ['category-id'];
+    static observedAttributes = ['category-id', 'is-category-label'];
 
     constructor() {
         super();
@@ -14,7 +14,12 @@ class GameCreatorCardElement extends HTMLElement {
             <input type="text" class="card-input" />
         </label>
         `;
-        this.shadowRoot.querySelector('.card-input').onchange = this.onValueChange.bind(this);
+        const input = this.shadowRoot.querySelector('.card-input');
+        input.onchange = this.onValueChange.bind(this);
+
+        if (this.getAttribute('is-category-label') === 'true') {
+            input.placeholder = `group ${categoryId}`;
+        }
     }
 
     onValueChange(event) {
@@ -23,7 +28,8 @@ class GameCreatorCardElement extends HTMLElement {
             composed: true,
             detail: {
                 categoryId: this.getAttribute('category-id'),
-                categoryItemIndex: this.getAttribute('category-item-index'),
+                categoryItemIndex: parseInt(this.getAttribute('category-item-index')),
+                isCategoryLabel: this.getAttribute('is-category-label') === 'true',
                 value: event.srcElement.value
             }
         }));

@@ -9,7 +9,7 @@ class GameCreatorElement extends HTMLElement {
     connectedCallback() {
         this.shadowRoot.innerHTML = `
         <link rel="stylesheet" href="elements/game-creator/game-creator.element.css">
-        
+        <div id="snackbar"></div>
         <sl-game-creator-board></sl-game-creator-board>
         <div class="buttons-container">
             <button id="create-button" class="button" data-is-disabled="true">Create</button>
@@ -23,10 +23,10 @@ class GameCreatorElement extends HTMLElement {
 
     onBoardChanged(detail) {
         this._board = detail.board;
-        this.shadowRoot.querySelector('#submit-button').dataset.isDisabled = !this.isBoardValid(this._board);
+        this.shadowRoot.querySelector('#create-button').dataset.isDisabled = !this.isBoardReady(this._board);
     }
 
-    isBoardValid(board) {
+    isBoardReady(board) {
         return board.Categories.filter(category => 
             category.Label.trim() &&
             category.Items.length == 4 &&
@@ -34,7 +34,32 @@ class GameCreatorElement extends HTMLElement {
         ).length == 4;
     }
 
+    validateBoard(board) {
+        const categoryLabels = new Set(board.Categories.map(x => x.Label));
+        if (categoryLabels.size < 4) {
+            return { isValid: false, message: 'Groups must be unique' };
+        }
+
+        const itemLabels = new Set();
+        board.Categories.forEach(c => {
+            c.Items.forEach(i => {
+                itemLabels.add(i.Label);
+            })
+        });
+        if (itemLabels.size < 16) {
+            return { isValid: false, message: 'All cards must be unique' };
+        }
+
+        return { isValid: true, message: 'Board is valid!' };
+    }
+
     create() {
+        const validationResult = this.validateBoard(this._board);
+        this.showMessage(validationResult.message);
+        if (!validationResult.isValid) {
+            return;
+        }
+
         const boardId = BoardService.createBoard(this._board);
         document.dispatchEvent(new CustomEvent('board-created', {
             bubbles: true,
@@ -43,6 +68,13 @@ class GameCreatorElement extends HTMLElement {
                 boardId: boardId
             }
         }));
+    }
+
+    showMessage(message) {
+        const $snackBar = this.shadowRoot.getElementById('snackbar');
+        $snackBar.innerText = message;
+        $snackBar.className = 'show';
+        setTimeout(() => $snackBar.className = $snackBar.className.replace("show", ""), 2700);
     }
 }
 

@@ -41,11 +41,14 @@ class GameCreatorBoardElement extends HTMLElement {
         `;
 
         const cardsContainer = this.shadowRoot.getElementById('cards-container');
-        for (let i = 0; i < 16; i++) {
-            const categoryId = Math.floor(i / 4) + 1;
+        for (let i = 0; i < 20; i++) {
+            const categoryId = Math.floor(i / 5) + 1;
             const card = document.createElement('sl-game-creator-card');
             card.setAttribute('category-id', categoryId);
-            card.setAttribute('category-item-index', i % 4);
+
+            const itemIndexInRow = i % 5;
+            card.setAttribute('is-category-label', itemIndexInRow == 0);
+            card.setAttribute('category-item-index', itemIndexInRow - 1);
             cardsContainer.appendChild(card);
         }
 
@@ -54,7 +57,11 @@ class GameCreatorBoardElement extends HTMLElement {
 
     cardValueChanged(detail) {
         const categoryIndex = this._board.Categories.findIndex(x => x.CategoryId == detail.categoryId);
-        this._board.Categories[categoryIndex].Items[parseInt(detail.categoryItemIndex)].Label = detail.value;
+        if (detail.isCategoryLabel) {
+            this._board.Categories[categoryIndex].Label = detail.value;
+        } else {
+            this._board.Categories[categoryIndex].Items[parseInt(detail.categoryItemIndex)].Label = detail.value;
+        }
 
         document.dispatchEvent(new CustomEvent('game-creator-board-changed', {
             bubbles: true,
