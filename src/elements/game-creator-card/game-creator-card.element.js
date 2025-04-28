@@ -1,5 +1,5 @@
 class GameCreatorCardElement extends HTMLElement {        
-    static observedAttributes = ['category-id', 'is-category-label'];
+    static observedAttributes = ['group-id', 'is-group-label'];
 
     constructor() {
         super();
@@ -7,18 +7,18 @@ class GameCreatorCardElement extends HTMLElement {
     }
 
     connectedCallback() {
-        const categoryId = this.getAttribute('category-id') ?? 1;
+        const groupId = this.getAttribute('group-id') ?? 1;
         this.shadowRoot.innerHTML = `
         <link rel="stylesheet" href="elements/game-creator-card/game-creator-card.element.css">
-        <label class="card-label" style="background-color: var(--category-${categoryId}-color)">
+        <label class="card-label" style="background-color: var(--group-${groupId}-color)">
             <input type="text" class="card-input" />
         </label>
         `;
         const input = this.shadowRoot.querySelector('.card-input');
         input.onchange = this.onValueChange.bind(this);
 
-        if (this.getAttribute('is-category-label') === 'true') {
-            input.placeholder = `group ${categoryId}`;
+        if (this.getAttribute('is-group-label') === 'true') {
+            input.placeholder = `group ${groupId}`;
         }
     }
 
@@ -27,9 +27,9 @@ class GameCreatorCardElement extends HTMLElement {
             bubbles: true,
             composed: true,
             detail: {
-                categoryId: this.getAttribute('category-id'),
-                categoryItemIndex: parseInt(this.getAttribute('category-item-index')),
-                isCategoryLabel: this.getAttribute('is-category-label') === 'true',
+                groupId: this.getAttribute('group-id'),
+                groupItemIndex: parseInt(this.getAttribute('group-item-index')),
+                isGroupLabel: this.getAttribute('is-group-label') === 'true',
                 value: event.srcElement.value
             }
         }));

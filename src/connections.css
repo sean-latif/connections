@@ -2,8 +2,8 @@ body {
     font-family: Arial;
     text-align: center;
 
-    --category-1-color: #f9df6d;
-    --category-2-color: #a0c35a;
-    --category-3-color: #b0c4ef;
-    --category-4-color: #ba81c5;
+    --group-1-color: #f9df6d;
+    --group-2-color: #a0c35a;
+    --group-3-color: #b0c4ef;
+    --group-4-color: #ba81c5;
 }

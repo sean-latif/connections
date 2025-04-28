@@ -18,7 +18,7 @@ class ResultsElement extends HTMLElement {
         </div>`;
 
         const submissions = SessionService.getSubmissions(this.getAttribute('session-id'));
-        const categoriesByItem = BoardService.getCategoriesByItem(this.getAttribute('board-id'));
+        const groupsByItem = BoardService.getGroupsByItem(this.getAttribute('board-id'));
         const endModalContent = this.shadowRoot.getElementById('blocks-container');
         submissions.forEach(x => {
             const blocksRow = document.createElement('span');
@@ -26,7 +26,7 @@ class ResultsElement extends HTMLElement {
             x.forEach(y => {
                 const block = document.createElement('span');
                 block.className = 'block';
-                block.style['background-color'] = `var(--category-${categoriesByItem[y].CategoryId}-color)`;
+                block.style['background-color'] = `var(--group-${groupsByItem[y].GroupId}-color)`;
                 blocksRow.appendChild(block);
             });
             endModalContent.appendChild(blocksRow);

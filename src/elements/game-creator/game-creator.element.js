@@ -27,21 +27,21 @@ class GameCreatorElement extends HTMLElement {
     }
 
     isBoardReady(board) {
-        return board.Categories.filter(category => 
-            category.Label.trim() &&
-            category.Items.length == 4 &&
-            category.Items.filter(item => item.Label && item.Label.trim()).length == 4
+        return board.Groups.filter(group => 
+            group.Label.trim() &&
+            group.Items.length == 4 &&
+            group.Items.filter(item => item.Label && item.Label.trim()).length == 4
         ).length == 4;
     }
 
     validateBoard(board) {
-        const categoryLabels = new Set(board.Categories.map(x => x.Label));
-        if (categoryLabels.size < 4) {
+        const groupLabels = new Set(board.Groups.map(x => x.Label));
+        if (groupLabels.size < 4) {
             return { isValid: false, message: 'Groups must be unique' };
         }
 
         const itemLabels = new Set();
-        board.Categories.forEach(c => {
+        board.Groups.forEach(c => {
             c.Items.forEach(i => {
                 itemLabels.add(i.Label);
             })

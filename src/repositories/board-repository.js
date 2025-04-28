@@ -11,9 +11,9 @@ class BoardRepository {
 
     static boards = {
         '0': {
-            Categories: [
+            Groups: [
                 {
-                    CategoryId: 1,
+                    GroupId: 1,
                     Label: '1,2,3,4',
                     Items: [
                         { Label: '1' },
@@ -23,7 +23,7 @@ class BoardRepository {
                     ]
                 },
                 {
-                    CategoryId: 2,
+                    GroupId: 2,
                     Label: '5,6,7,8',
                     Items: [
                         { Label: '5' },
@@ -33,7 +33,7 @@ class BoardRepository {
                     ]
                 },
                 {
-                    CategoryId: 3,
+                    GroupId: 3,
                     Label: '9,10,11,12',
                     Items: [
                         { Label: '9' },
@@ -43,7 +43,7 @@ class BoardRepository {
                     ]
                 },
                 {
-                    CategoryId: 4,
+                    GroupId: 4,
                     Label: '13,14,15,16',
                     Items: [
                         { Label: '13' },
@@ -55,9 +55,9 @@ class BoardRepository {
             ]
         },
         '1': {
-            Categories: [
+            Groups: [
                 {
-                    CategoryId: 1,
+                    GroupId: 1,
                     Label: 'horses',
                     Items: [
                         { Label: 'stallion' },
@@ -67,7 +67,7 @@ class BoardRepository {
                     ]
                 },
                 {
-                    CategoryId: 2,
+                    GroupId: 2,
                     Label: 'related to nintendo system names',
                     Items: [
                         { Label: 'super' },
@@ -77,7 +77,7 @@ class BoardRepository {
                     ]
                 },
                 {
-                    CategoryId: 3,
+                    GroupId: 3,
                     Label: 'things featuring pages',
                     Items: [
                         { Label: 'book' },
@@ -87,7 +87,7 @@ class BoardRepository {
                     ]
                 },
                 {
-                    CategoryId: 4,
+                    GroupId: 4,
                     Label: 'actors in paige\'s favorite movies',
                     Items: [
                         { Label: 'law' },
@@ -99,9 +99,9 @@ class BoardRepository {
             ]
         },
         '2': {
-            Categories: [
+            Groups: [
                 {
-                    CategoryId: 1,
+                    GroupId: 1,
                     Label: 'cw shows',
                     Items: [
                         { Label: 'arrow' },
@@ -111,7 +111,7 @@ class BoardRepository {
                     ]
                 },
                 {
-                    CategoryId: 2,
+                    GroupId: 2,
                     Label: 'avatars',
                     Items: [
                         { Label: 'korra' },
@@ -121,7 +121,7 @@ class BoardRepository {
                     ]
                 },
                 {
-                    CategoryId: 3,
+                    GroupId: 3,
                     Label: 'jobs at a college',
                     Items: [
                         { Label: 'dean' },
@@ -131,7 +131,7 @@ class BoardRepository {
                     ]
                 },
                 {
-                    CategoryId: 4,
+                    GroupId: 4,
                     Label: 'robins',
                     Items: [
                         { Label: 'grayson' },
@@ -143,9 +143,9 @@ class BoardRepository {
             ]
         },
         '3': {
-            Categories: [
+            Groups: [
                 {
-                    CategoryId: 1,
+                    GroupId: 1,
                     Label: 'paige pets',
                     Items: [
                         { Label: 'arrow' },
@@ -155,7 +155,7 @@ class BoardRepository {
                     ]
                 },
                 {
-                    CategoryId: 2,
+                    GroupId: 2,
                     Label: 'mortal kombat ninjas',
                     Items: [
                         { Label: 'scorpion' },
@@ -165,7 +165,7 @@ class BoardRepository {
                     ]
                 },
                 {
-                    CategoryId: 3,
+                    GroupId: 3,
                     Label: 'games featuring kings',
                     Items: [
                         { Label: 'kingdom hearts' },
@@ -175,7 +175,7 @@ class BoardRepository {
                     ]
                 },
                 {
-                    CategoryId: 4,
+                    GroupId: 4,
                     Label: 'first syllables of anime character',
                     Items: [
                         { Label: 'go' },
@@ -187,9 +187,9 @@ class BoardRepository {
             ]
         },
         '4': {
-            Categories: [
+            Groups: [
                 {
-                    CategoryId: 1,
+                    GroupId: 1,
                     Label: 'batman actors',
                     Items: [
                         { Label: 'christian' },
@@ -199,7 +199,7 @@ class BoardRepository {
                     ]
                 },
                 {
-                    CategoryId: 2,
+                    GroupId: 2,
                     Label: 'robins',
                     Items: [
                         { Label: 'richard' },
@@ -209,7 +209,7 @@ class BoardRepository {
                     ]
                 },
                 {
-                    CategoryId: 3,
+                    GroupId: 3,
                     Label: 'batman father figures',
                     Items: [
                         { Label: 'alfred' },
@@ -219,7 +219,7 @@ class BoardRepository {
                     ]
                 },
                 {
-                    CategoryId: 4,
+                    GroupId: 4,
                     Label: 'batman villains',
                     Items: [
                         { Label: 'edward' },
@@ -231,9 +231,9 @@ class BoardRepository {
             ]
         },
         '5': {
-            Categories: [
+            Groups: [
                 {
-                    CategoryId: 1,
+                    GroupId: 1,
                     Label: 'paige smoothie ingredients',
                     Items: [
                         { Label: 'yogurt' },
@@ -243,7 +243,7 @@ class BoardRepository {
                     ]
                 },
                 {
-                    CategoryId: 2,
+                    GroupId: 2,
                     Label: 'shades of green',
                     Items: [
                         { Label: 'lime' },
@@ -253,7 +253,7 @@ class BoardRepository {
                     ]
                 },
                 {
-                    CategoryId: 3,
+                    GroupId: 3,
                     Label: 'paige poke ingredients',
                     Items: [
                         { Label: 'scallion' },
@@ -263,7 +263,7 @@ class BoardRepository {
                     ]
                 },
                 {
-                    CategoryId: 4,
+                    GroupId: 4,
                     Label: 'saiyan name vegetable puns',
                     Items: [
                         { Label: 'carrot' },
@@ -275,9 +275,9 @@ class BoardRepository {
             ]
         },
         '6': {
-            Categories: [
+            Groups: [
                 {
-                    CategoryId: 1,
+                    GroupId: 1,
                     Label: 'harry potter book titles',
                     Items: [
                         { Label: 'stone' },
@@ -287,7 +287,7 @@ class BoardRepository {
                     ]
                 },
                 {
-                    CategoryId: 2,
+                    GroupId: 2,
                     Label: 'star wars titles',
                     Items: [
                         { Label: 'rise' },
@@ -297,7 +297,7 @@ class BoardRepository {
                     ]
                 },
                 {
-                    CategoryId: 3,
+                    GroupId: 3,
                     Label: 'cities paige has lived in',
                     Items: [
                         { Label: 'charleston' },
@@ -307,7 +307,7 @@ class BoardRepository {
                     ]
                 },
                 {
-                    CategoryId: 4,
+                    GroupId: 4,
                     Label: 'real housewives of _____',
                     Items: [
                         { Label: 'atlanta' },
@@ -319,9 +319,9 @@ class BoardRepository {
             ]
         },
         '7': {
-            Categories: [
+            Groups: [
                 {
-                    CategoryId: 1,
+                    GroupId: 1,
                     Label: 'movie secret agents',
                     Items: [
                         { Label: 'james' },
@@ -331,7 +331,7 @@ class BoardRepository {
                     ]
                 },
                 {
-                    CategoryId: 2,
+                    GroupId: 2,
                     Label: 'james bond actors',
                     Items: [
                         { Label: 'sean' },
@@ -341,7 +341,7 @@ class BoardRepository {
                     ]
                 },
                 {
-                    CategoryId: 3,
+                    GroupId: 3,
                     Label: 'Groups of 7',
                     Items: [
                         { Label: 'sin' },
@@ -351,7 +351,7 @@ class BoardRepository {
                     ]
                 },
                 {
-                    CategoryId: 4,
+                    GroupId: 4,
                     Label: 'jame bond movie 1st word',
                     Items: [
                         { Label: 'tomorrow' },
@@ -363,9 +363,9 @@ class BoardRepository {
             ]
         },
         '8': {
-            Categories: [
+            Groups: [
                 {
-                    CategoryId: 1,
+                    GroupId: 1,
                     Label: 'eeveelutions ____eon',
                     Items: [
                         { Label: 'esp' },
@@ -375,7 +375,7 @@ class BoardRepository {
                     ]
                 },
                 {
-                    CategoryId: 2,
+                    GroupId: 2,
                     Label: 'pokemon game names',
                     Items: [
                         { Label: 'ruby' },
@@ -385,7 +385,7 @@ class BoardRepository {
                     ]
                 },
                 {
-                    CategoryId: 3,
+                    GroupId: 3,
                     Label: 'pokemon humans',
                     Items: [
                         { Label: 'ash' },
@@ -395,7 +395,7 @@ class BoardRepository {
                     ]
                 },
                 {
-                    CategoryId: 4,
+                    GroupId: 4,
                     Label: 'pokeballs',
                     Items: [
                         { Label: 'master' },
@@ -407,9 +407,9 @@ class BoardRepository {
             ]
         },
         '9': {
-            Categories: [
+            Groups: [
                 {
-                    CategoryId: 2,
+                    GroupId: 2,
                     Label: 'The I in an initialism (LTI, UWI, API, PI)',
                     Items: [
                         { Label: 'inter-\noperability' },
@@ -419,7 +419,7 @@ class BoardRepository {
                     ]
                 },
                 {
-                    CategoryId: 1,
+                    GroupId: 1,
                     Label: 'UWI teammember name homophones',
                     Items: [
                         { Label: 'been' },
@@ -429,7 +429,7 @@ class BoardRepository {
                     ]
                 },
                 {
-                    CategoryId: 3,
+                    GroupId: 3,
                     Label: 'spider-man title adjectives',
                     Items: [
                         { Label: 'superior' },
@@ -439,7 +439,7 @@ class BoardRepository {
                     ]
                 },
                 {
-                    CategoryId: 4,
+                    GroupId: 4,
                     Label: 'words that are the same in spanish and english',
                     Items: [
                         { Label: 'actor' },

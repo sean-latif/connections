@@ -1,23 +1,23 @@
 class GameCreatorBoardElement extends HTMLElement {
     _board = {
-        Categories: [
+        Groups: [
             {
-                CategoryId: 1,
+                GroupId: 1,
                 Label: '1',
                 Items: [{}, {}, {}, {}]
             },
             {
-                CategoryId: 2,
+                GroupId: 2,
                 Label: '2',
                 Items: [{}, {}, {}, {}]
             },
             {
-                CategoryId: 3,
+                GroupId: 3,
                 Label: '3',
                 Items: [{}, {}, {}, {}]
             },
             {
-                CategoryId: 4,
+                GroupId: 4,
                 Label: '4',
                 Items: [{}, {}, {}, {}]
             }
@@ -42,13 +42,13 @@ class GameCreatorBoardElement extends HTMLElement {
 
         const cardsContainer = this.shadowRoot.getElementById('cards-container');
         for (let i = 0; i < 20; i++) {
-            const categoryId = Math.floor(i / 5) + 1;
+            const groupId = Math.floor(i / 5) + 1;
             const card = document.createElement('sl-game-creator-card');
-            card.setAttribute('category-id', categoryId);
+            card.setAttribute('group-id', groupId);
 
             const itemIndexInRow = i % 5;
-            card.setAttribute('is-category-label', itemIndexInRow == 0);
-            card.setAttribute('category-item-index', itemIndexInRow - 1);
+            card.setAttribute('is-group-label', itemIndexInRow == 0);
+            card.setAttribute('group-item-index', itemIndexInRow - 1);
             cardsContainer.appendChild(card);
         }
 
@@ -56,11 +56,11 @@ class GameCreatorBoardElement extends HTMLElement {
     }
 
     cardValueChanged(detail) {
-        const categoryIndex = this._board.Categories.findIndex(x => x.CategoryId == detail.categoryId);
-        if (detail.isCategoryLabel) {
-            this._board.Categories[categoryIndex].Label = detail.value;
+        const groupIndex = this._board.Groups.findIndex(x => x.GroupId == detail.groupId);
+        if (detail.isGroupLabel) {
+            this._board.Groups[groupIndex].Label = detail.value;
         } else {
-            this._board.Categories[categoryIndex].Items[parseInt(detail.categoryItemIndex)].Label = detail.value;
+            this._board.Groups[groupIndex].Items[parseInt(detail.groupItemIndex)].Label = detail.value;
         }
 
         document.dispatchEvent(new CustomEvent('game-creator-board-changed', {

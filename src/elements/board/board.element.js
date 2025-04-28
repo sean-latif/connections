@@ -2,8 +2,8 @@ class BoardElement extends HTMLElement {
     static observedAttributes = ['board-id'];
 
     _boardId;
-    CATEGORY_COUNT = 4;
-    CATEGORY_ITEM_COUNT = 4;
+    GROUP_COUNT = 4;
+    GROUP_ITEM_COUNT = 4;
 
     constructor() {
         super();
@@ -53,7 +53,7 @@ class BoardElement extends HTMLElement {
     onCardToggle() {
         const cards = this.getCards();
         const selectedCards = cards.filter(this.isCardSelected);
-        const areAllSelectionsMade = selectedCards.length === this.CATEGORY_ITEM_COUNT;
+        const areAllSelectionsMade = selectedCards.length === this.GROUP_ITEM_COUNT;
         const unselectedCards = cards.filter(card => !this.isCardSelected(card));
         unselectedCards.forEach(card => card.setAttribute('disabled', areAllSelectionsMade));
 
@@ -73,7 +73,7 @@ class BoardElement extends HTMLElement {
         let isBoardComplete = false;
 
         if (result.isSuccess) {
-            isBoardComplete = this.onCategoryComplete(result.category, true);
+            isBoardComplete = this.onGroupComplete(result.group, true);
         } else {
             selectedCards.forEach($card => $card.setAttribute('errored', true));
         }
@@ -88,32 +88,32 @@ class BoardElement extends HTMLElement {
         }));
     }
 
-    onCategoryComplete(category, isSuccess) {
-        const completedCategorySection = document.createElement('section');
-        completedCategorySection.className = 'answers-container-category';
-        completedCategorySection.style['background-color'] = `var(--category-${category.CategoryId}-color)`;
-        const completedCategorySectionLabel = document.createElement('h3');
-        completedCategorySectionLabel.innerText = category.Label;
-        const completedCategorySectionCards = document.createElement('label');
-        completedCategorySectionCards.innerText = category.Items.map(item => item.Label).join(', ');
-        completedCategorySection.appendChild(completedCategorySectionLabel);
-        completedCategorySection.appendChild(completedCategorySectionCards);
+    onGroupComplete(group, isSuccess) {
+        const completedGroupSection = document.createElement('section');
+        completedGroupSection.className = 'answers-container-group';
+        completedGroupSection.style['background-color'] = `var(--group-${group.GroupId}-color)`;
+        const completedGroupSectionLabel = document.createElement('h3');
+        completedGroupSectionLabel.innerText = group.Label;
+        const completedGroupSectionCards = document.createElement('label');
+        completedGroupSectionCards.innerText = group.Items.map(item => item.Label).join(', ');
+        completedGroupSection.appendChild(completedGroupSectionLabel);
+        completedGroupSection.appendChild(completedGroupSectionCards);
         const answersContainer = this.shadowRoot.getElementById('answers-container');
-        answersContainer.appendChild(completedCategorySection);
-        const categoriesCompletedCount = this.shadowRoot.querySelectorAll('.answers-container-category').length;
-        answersContainer.style.height = (3 * 8) + ((categoriesCompletedCount) * 80) + 'px';
-        answersContainer.style['grid-template-rows'] = `repeat(${categoriesCompletedCount}, 1fr)`;
+        answersContainer.appendChild(completedGroupSection);
+        const groupsCompletedCount = this.shadowRoot.querySelectorAll('.answers-container-group').length;
+        answersContainer.style.height = (3 * 8) + ((groupsCompletedCount) * 80) + 'px';
+        answersContainer.style['grid-template-rows'] = `repeat(${groupsCompletedCount}, 1fr)`;
     
         this.getCards().filter(this.isCardSelected).forEach($card => $card.remove());
     
-        const categoriesIncompletedCount = this.CATEGORY_COUNT - categoriesCompletedCount;
+        const groupsIncompletedCount = this.GROUP_COUNT - groupsCompletedCount;
         const cardsContainer = this.shadowRoot.getElementById('cards-container');
-        cardsContainer.style['grid-template-rows'] = `repeat(${categoriesIncompletedCount}, 1fr)`;
-        cardsContainer.style.height = (3 * 8) + (categoriesIncompletedCount * 80) + 'px';
+        cardsContainer.style['grid-template-rows'] = `repeat(${groupsIncompletedCount}, 1fr)`;
+        cardsContainer.style.height = (3 * 8) + (groupsIncompletedCount * 80) + 'px';
     
         this.onCardToggle();
     
-        return isSuccess && categoriesIncompletedCount == 0;
+        return isSuccess && groupsIncompletedCount == 0;
     }
     
     shuffle() {
@@ -131,16 +131,16 @@ class BoardElement extends HTMLElement {
     }
 
     gameOver() {
-        const categoriesByItem = BoardService.getCategoriesByItem(this.getAttribute('board-id'));
+        const groupsByItem = BoardService.getGroupsByItem(this.getAttribute('board-id'));
         const remainingItems = this.getCards().map(x => x.getAttribute('text'));
-        const remainingCategories = {};
+        const remainingGroups = {};
         remainingItems.forEach(x => {
-            const category = categoriesByItem[x];
-            remainingCategories[category.CategoryId] = category;
+            const group = groupsByItem[x];
+            remainingGroups[group.GroupId] = group;
         });
 
-        Object.keys(remainingCategories).forEach(x => {
-            this.onCategoryComplete(remainingCategories[x], false);
+        Object.keys(remainingGroups).forEach(x => {
+            this.onGroupComplete(remainingGroups[x], false);
         });
         this.getCards().forEach($card => $card.remove());
     }

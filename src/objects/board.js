@@ -1,8 +1,8 @@
 class Board {
-    Categories;
+    Groups;
 }
 
-class Category {
+class Group {
     Id;
     Label;
     Items;

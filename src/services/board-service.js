@@ -6,8 +6,8 @@ class BoardService {
     static getBoardItems(boardId) {
         const items = [];
         const board = BoardRepository.getConnectionsBoard(boardId);
-        board.Categories.forEach(category => {
-            category.Items.forEach((item) => {
+        board.Groups.forEach(group => {
+            group.Items.forEach((item) => {
                 items.push(item);
             });
         });
@@ -16,36 +16,36 @@ class BoardService {
 
     static evaluateGuess(boardId, items) {
         const board = BoardRepository.getConnectionsBoard(boardId);
-        const categoriesByItem = {};
-        board.Categories.forEach(category => {
-            category.Items.forEach((item) => {
-                categoriesByItem[item.Label] = category;
+        const groupsByItem = {};
+        board.Groups.forEach(group => {
+            group.Items.forEach((item) => {
+                groupsByItem[item.Label] = group;
             });
         });
 
-        const selectedCategoryCounts = {};
+        const selectedGroupCounts = {};
         items.forEach(item => {
-            selectedCategoryCounts[categoriesByItem[item].CategoryId] = selectedCategoryCounts[categoriesByItem[item].CategoryId] == null ?
+            selectedGroupCounts[groupsByItem[item].GroupId] = selectedGroupCounts[groupsByItem[item].GroupId] == null ?
                 1 :
-                selectedCategoryCounts[categoriesByItem[item].CategoryId] + 1;
+                selectedGroupCounts[groupsByItem[item].GroupId] + 1;
         });
-        const isSuccess = Object.keys(selectedCategoryCounts).length === 1;
+        const isSuccess = Object.keys(selectedGroupCounts).length === 1;
         return {
             isSuccess: isSuccess,
-            category: isSuccess ? categoriesByItem[items[0]] : null,
-            message: Object.keys(selectedCategoryCounts).filter(x => selectedCategoryCounts[x] === 3).length ? 'One away...' : null
+            group: isSuccess ? groupsByItem[items[0]] : null,
+            message: Object.keys(selectedGroupCounts).filter(x => selectedGroupCounts[x] === 3).length ? 'One away...' : null
         };
     }
 
-    static getCategoriesByItem(boardId) {
+    static getGroupsByItem(boardId) {
         const board = BoardRepository.getConnectionsBoard(boardId);
-        const categoriesByItem = {};
-        board.Categories.forEach(category => {
-            category.Items.forEach((item) => {
-                categoriesByItem[item.Label] = category;
+        const groupsByItem = {};
+        board.Groups.forEach(group => {
+            group.Items.forEach((item) => {
+                groupsByItem[item.Label] = group;
             });
         });
 
-        return categoriesByItem;
+        return groupsByItem;
     }
 }
